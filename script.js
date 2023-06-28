@@ -29,6 +29,21 @@ function addBookToLibrary(book){
     removeButton.textContent = "Remove";
     newBook.appendChild(removeButton);
     books.appendChild(newBook);
+
+    removeButton.addEventListener("click", () => {
+        const removedBook = removeButton.parentNode;
+        const bookList = Array.from(document.querySelectorAll(".book"));
+
+        let childIndex = 0;
+        while(removedBook !== bookList[childIndex]){
+            childIndex++;
+        }
+
+        myLibrary.splice(childIndex, 1);
+        console.log(myLibrary);
+
+        removedBook.remove();
+    });
 }
 
 newBook.addEventListener("click", () => {
