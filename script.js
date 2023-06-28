@@ -37,9 +37,7 @@ function addBookToLibrary(book){
 
         removedBook.remove();
     });
-
-    const lineBreak = document.createElement("br");
-    newBook.appendChild(lineBreak); 
+ 
     const readButton = document.createElement("button");
     readButton.classList.add("read-button")
     readButton.textContent = "Toggle Read Status"
@@ -54,6 +52,7 @@ function addBookToLibrary(book){
         const toggledBookObj = myLibrary[bookIndex];
         toggledBookObj.hasRead = !toggledBookObj.hasRead;
         toggledBookText.textContent = toggledBookObj.info();
+        toggledBook.classList.toggle("read");
     });
 
     books.appendChild(newBook);

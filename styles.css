@@ -1,21 +1,102 @@
+*{
+    color: white;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+html,
+body{
+    background-color: black;
+    margin: 0;
+}
+
+/*
+body{
+    background-color: black;
+}*/
+
+h1,
+.books,
+.modal{
+    padding: 10px;
+}
+
+h1{
+    font-size: 50px;
+    background-color: gray;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-style: italic;
+    text-shadow: 4px 4px black;
+}
+
+.books{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.new{
+    background-color: purple;
+    margin-left: 10px;
+}
+
 .book{
-    border: 1px solid black;
+    border: 1px solid white;
+    border-radius: 10px;
+    height: 300px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.book div{
+    font-size: 30px;
 }
 
 .remove{
     background-color: red;
+    margin-top: auto;
+    margin-bottom: 10px;
 }
 
 .modal{
     display: none;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .modal-revealed{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.submit{
+    border: 2px solid white;
+    background-color: black;
+    border-radius: 5px;
+}
+
+input{
+    color: black;
 }
 
 .read-button{
     background-color: green;
+}
+
+.read{
+    background-color: rgba(255,215,0,0.4);
+}
+
+.remove,
+.read-button,
+.new{
+    padding: 10px 15px;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    text-shadow: 2px 2px black;
 }
