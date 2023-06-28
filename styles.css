@@ -1,0 +1,23 @@
+.book{
+    border: 1px solid black;
+}
+
+.remove{
+    background-color: red;
+}
+
+.modal-wrapper{
+    display: grid;
+    place-items: center;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+
+.modal{
+    display: none;
+}
+
+.modal-revealed{
+    display: block;
+}
