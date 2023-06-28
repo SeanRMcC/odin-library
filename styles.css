@@ -6,16 +6,10 @@
     background-color: red;
 }
 
-.modal-wrapper{
-    display: grid;
-    place-items: center;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-}
-
 .modal{
     display: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .modal-revealed{

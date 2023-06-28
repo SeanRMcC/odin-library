@@ -19,15 +19,16 @@ Book.prototype.info = function(){
 
 function addBookToLibrary(book){
     myLibrary.push(book);
-}
-
-function displayBooks(){
-    for(let b of myLibrary){
-        let book = document.createElement("div");
-        book.classList.add("book");
-        book.innerHTML = b.info() + '<br><button type="button" class="remove">Remove</button>';
-        books.appendChild(book);
-    }
+    const newBook = document.createElement("div");
+    newBook.classList.add("book");
+    newBook.textContent = book.info();
+    const lineBreak = document.createElement("br");
+    newBook.appendChild(lineBreak);
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("remove");
+    removeButton.textContent = "Remove";
+    newBook.appendChild(removeButton);
+    books.appendChild(newBook);
 }
 
 newBook.addEventListener("click", () => {
@@ -42,16 +43,9 @@ form.addEventListener("submit", e => {
     for(let dataArrayCell of dataArray){
         dataObject[dataArrayCell[0]] = dataArrayCell[1];
     }
-    console.log(dataObject);
 
     const book = new Book(dataObject.title, dataObject.author, dataObject.pages);
-    clear();
     addBookToLibrary(book);
-    displayBooks();
     form.classList.remove("modal-revealed");
     form.reset();
 });
-
-function clear(){
-    books.innerHTML = '';
-}
