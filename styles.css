@@ -15,3 +15,7 @@
 .modal-revealed{
     display: block;
 }
+
+.read-button{
+    background-color: green;
+}

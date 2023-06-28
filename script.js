@@ -21,9 +21,9 @@ function addBookToLibrary(book){
     myLibrary.push(book);
     const newBook = document.createElement("div");
     newBook.classList.add("book");
-    newBook.textContent = book.info();
-    const lineBreak = document.createElement("br");
-    newBook.appendChild(lineBreak);
+    const text = document.createElement("div");
+    text.textContent = book.info();
+    newBook.appendChild(text);
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove");
     removeButton.textContent = "Remove";
@@ -31,15 +31,30 @@ function addBookToLibrary(book){
 
     removeButton.addEventListener("click", () => {
         const removedBook = removeButton.parentNode;
-        const bookList = Array.from(document.querySelectorAll(".book"));
 
         let childIndex = indexOfBookNode(removedBook);
         myLibrary.splice(childIndex, 1);
-        console.log(myLibrary);
 
         removedBook.remove();
     });
 
+    const lineBreak = document.createElement("br");
+    newBook.appendChild(lineBreak); 
+    const readButton = document.createElement("button");
+    readButton.classList.add("read-button")
+    readButton.textContent = "Toggle Read Status"
+    newBook.appendChild(readButton);
+
+    readButton.addEventListener("click", () => {
+        const toggledBook = readButton.parentNode;
+        const toggledBookText = toggledBook.firstChild;
+        console.log("hi");
+        const bookIndex = indexOfBookNode(toggledBook);
+        console.log("bye");
+        const toggledBookObj = myLibrary[bookIndex];
+        toggledBookObj.hasRead = !toggledBookObj.hasRead;
+        toggledBookText.textContent = toggledBookObj.info();
+    });
 
     books.appendChild(newBook);
 }
