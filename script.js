@@ -28,22 +28,20 @@ function addBookToLibrary(book){
     removeButton.classList.add("remove");
     removeButton.textContent = "Remove";
     newBook.appendChild(removeButton);
-    books.appendChild(newBook);
 
     removeButton.addEventListener("click", () => {
         const removedBook = removeButton.parentNode;
         const bookList = Array.from(document.querySelectorAll(".book"));
 
-        let childIndex = 0;
-        while(removedBook !== bookList[childIndex]){
-            childIndex++;
-        }
-
+        let childIndex = indexOfBookNode(removedBook);
         myLibrary.splice(childIndex, 1);
         console.log(myLibrary);
 
         removedBook.remove();
     });
+
+
+    books.appendChild(newBook);
 }
 
 newBook.addEventListener("click", () => {
@@ -64,3 +62,14 @@ form.addEventListener("submit", e => {
     form.classList.remove("modal-revealed");
     form.reset();
 });
+
+function indexOfBookNode(node){
+    const bookList = Array.from(document.querySelectorAll(".book"));
+
+    let childIndex = 0;
+    while(node !== bookList[childIndex]){
+        childIndex++;
+    }
+
+    return childIndex;
+}
