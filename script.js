@@ -4,25 +4,28 @@ const form = document.querySelector(".modal");
 
 let myLibrary = [];
 
-function Book(title, author, pages){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.hasRead = false;
-}
 
-Book.prototype.info = function(){
-    let information = `${this.title} by ${this.author}, ${this.pages} pages,`;
-    information += this.hasRead ? " already read" : " not read yet";
-    return information;
-};
+class Book{
+    constructor(title, author, pages){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.hasRead = false
+    }
+
+    get info(){
+        let information = `${this.title} by ${this.author}, ${this.pages} pages,`;
+        information += this.hasRead ? " already read" : " not read yet";
+        return information;
+    }
+}
 
 function addBookToLibrary(book){
     myLibrary.push(book);
     const newBook = document.createElement("div");
     newBook.classList.add("book");
     const text = document.createElement("div");
-    text.textContent = book.info();
+    text.textContent = book.info;
     newBook.appendChild(text);
     const removeButton = document.createElement("button");
     removeButton.classList.add("remove");
@@ -46,12 +49,10 @@ function addBookToLibrary(book){
     readButton.addEventListener("click", () => {
         const toggledBook = readButton.parentNode;
         const toggledBookText = toggledBook.firstChild;
-        console.log("hi");
         const bookIndex = indexOfBookNode(toggledBook);
-        console.log("bye");
         const toggledBookObj = myLibrary[bookIndex];
         toggledBookObj.hasRead = !toggledBookObj.hasRead;
-        toggledBookText.textContent = toggledBookObj.info();
+        toggledBookText.textContent = toggledBookObj.info;
         toggledBook.classList.toggle("read");
     });
 
